@@ -6,11 +6,39 @@
    there is light to bend.
    ========================================================= */
 
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("../assets/fonts/thmanyahsans-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("../assets/fonts/thmanyahsans-Medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Thmanyah Sans";
+  src: url("../assets/fonts/thmanyahsans-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 /* ---------- 1. Tokens ---------- */
 :root {
   /* Dark (default) */
-  --bg-deep:      #070C1A;
-  --bg-raise:     #0E1730;
+  --ice-blue:    #D6E6F3;
+  --powder-blue: #A6C5D7;
+  --sapphire:    #0F52BA;
+  --deep-navy:   #000926;
+  --bg-deep:      var(--deep-navy);
+  --bg-raise:     #07183A;
   --glass-fill:   rgba(255, 255, 255, 0.055);
   --glass-fill-2: rgba(255, 255, 255, 0.085);
   --glass-edge:   rgba(255, 255, 255, 0.16);
@@ -26,24 +54,26 @@
   --tint-2:    rgba(255, 255, 255, 0.08);
   --tint-3:    rgba(255, 255, 255, 0.13);
   --tint-4:    rgba(255, 255, 255, 0.28);
-  --browser-bg: rgba(10, 16, 34, 0.55);
+  --browser-bg: rgba(0, 9, 38, 0.68);
   --scrim:     rgba(5, 9, 20, 0.72);
   --grain-opacity: 0.05;
-  --mark-cool: linear-gradient(150deg, rgba(90,169,255,0.28), rgba(141,107,255,0.14));
+  --mark-cool: linear-gradient(150deg, rgba(166,197,215,0.28), rgba(15,82,186,0.22));
   --mark-warm: linear-gradient(150deg, rgba(255,180,67,0.30), rgba(255,180,67,0.08));
 
-  --text:         #E9EFFF;
-  --text-muted:   #9AACD0;
-  --text-faint:   #6C7EA3;
+  --text:         var(--ice-blue);
+  --text-muted:   var(--powder-blue);
+  --text-faint:   #819CB5;
 
   --amber:        #FFB443;   /* photography / light */
-  --azure:        #5AA9FF;   /* software / code     */
-  --violet:       #8D6BFF;
+  --azure:        var(--powder-blue);
+  --violet:       var(--sapphire);
 
-  --aurora-1: rgba(90, 169, 255, 0.55);
-  --aurora-2: rgba(255, 180, 67, 0.34);
-  --aurora-3: rgba(141, 107, 255, 0.42);
+  --aurora-1: rgba(15, 82, 186, 0.58);
+  --aurora-2: rgba(255, 180, 67, 0.26);
+  --aurora-3: rgba(166, 197, 215, 0.28);
   --aurora-opacity: 1;
+  --pointer-glow: rgba(166, 197, 215, 0.2);
+  --rain-opacity: 0.1;
 
   /* Type */
   --font-display: "Sora", "IBM Plex Sans Arabic", system-ui, sans-serif;
@@ -68,10 +98,10 @@
 :root[data-theme="light"] {
   /* Daylight. The page sits on soft cool paper; the panels are LIGHTER
      than the page, which is the only way glass reads in a light scheme. */
-  --bg-deep:      #D7DFEF;
-  --bg-raise:     #FFFFFF;
-  --glass-fill:   rgba(255, 255, 255, 0.60);
-  --glass-fill-2: rgba(255, 255, 255, 0.82);
+  --bg-deep:      var(--ice-blue);
+  --bg-raise:     #F3F8FC;
+  --glass-fill:   rgba(255, 255, 255, 0.66);
+  --glass-fill-2: rgba(255, 255, 255, 0.88);
   --glass-edge:   rgba(24, 46, 96, 0.11);
   --glass-sheen:  rgba(255, 255, 255, 0.80);
   --glass-shadow: 0 18px 44px -20px rgba(24, 46, 96, 0.26);
@@ -87,21 +117,23 @@
   --browser-bg: rgba(255, 255, 255, 0.78);
   --scrim:     rgba(166, 180, 206, 0.78);
   --grain-opacity: 0.02;
-  --mark-cool: linear-gradient(150deg, rgba(43,111,209,0.20), rgba(107,76,224,0.10));
+  --mark-cool: linear-gradient(150deg, rgba(15,82,186,0.20), rgba(166,197,215,0.3));
   --mark-warm: linear-gradient(150deg, rgba(199,121,26,0.22), rgba(199,121,26,0.07));
 
-  --text:         #131E36;
-  --text-muted:   #45536F;
-  --text-faint:   #64718C;
+  --text:         var(--deep-navy);
+  --text-muted:   #294563;
+  --text-faint:   #496983;
 
-  --amber:        #B96A12;
-  --azure:        #2463C4;
-  --violet:       #5F41D6;
+  --amber:        #A85D12;
+  --azure:        var(--sapphire);
+  --violet:       #164C9D;
 
-  --aurora-1: rgba(70, 140, 235, 0.34);
+  --aurora-1: rgba(15, 82, 186, 0.28);
   --aurora-2: rgba(235, 155, 50, 0.26);
-  --aurora-3: rgba(125, 95, 235, 0.24);
-  --aurora-opacity: 0.55;
+  --aurora-3: rgba(166, 197, 215, 0.32);
+  --aurora-opacity: 0.72;
+  --pointer-glow: rgba(15, 82, 186, 0.12);
+  --rain-opacity: 0.055;
 }
 
 /* ---------- 2. Base ---------- */
@@ -125,6 +157,14 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   transition: background 0.5s ease, color 0.35s ease;
+}
+
+:root[lang="ar"] body {
+  font-family: "Thmanyah Sans", var(--font-body);
+}
+
+:root[lang="ar"] body {
+  font-family: "Thmanyah Sans", var(--font-body);
 }
 
 img { max-width: 100%; display: block; }
@@ -217,6 +257,58 @@ p { margin: 0; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+.pointer-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    520px circle at var(--pointer-x, 50vw) var(--pointer-y, 45vh),
+    var(--pointer-glow),
+    transparent 70%
+  );
+  transition: opacity 0.45s ease;
+}
+
+.has-pointer-glow .pointer-glow { opacity: 1; }
+
+.code-rain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--rain-opacity);
+  color: var(--azure);
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 78%, transparent);
+}
+
+.code-rain span {
+  position: absolute;
+  top: -105vh;
+  width: 2rem;
+  height: 205vh;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  line-height: 2.4;
+  overflow-wrap: anywhere;
+  writing-mode: vertical-rl;
+  animation: code-fall 30s linear infinite;
+}
+
+.code-rain span:nth-child(1) { left: 8%; animation-duration: 34s; }
+.code-rain span:nth-child(2) { left: 27%; animation-duration: 41s; animation-delay: -18s; }
+.code-rain span:nth-child(3) { right: 12%; animation-duration: 38s; animation-delay: -9s; }
+.code-rain span:nth-child(4) { right: 30%; animation-duration: 45s; animation-delay: -26s; }
+.code-rain span:nth-child(5) { left: 48%; animation-duration: 50s; animation-delay: -34s; }
+
+@keyframes code-fall {
+  to { transform: translateY(55vh); }
+}
+
 /* ---------- 4. The glass ---------- */
 .glass {
   position: relative;
@@ -266,11 +358,13 @@ p { margin: 0; }
 .dock {
   position: fixed;
   z-index: 40;
-  inset-inline: 0;
-  bottom: max(0.85rem, env(safe-area-inset-bottom));
+  top: calc(0.85rem + env(safe-area-inset-top));
+  right: calc(0.85rem + env(safe-area-inset-right));
+  left: auto;
   display: flex;
-  justify-content: center;
-  padding-inline: 0.75rem;
+  justify-content: flex-end;
+  width: max-content;
+  max-width: calc(100vw - 1.5rem);
   pointer-events: none;
 }
 
@@ -333,8 +427,29 @@ p { margin: 0; }
 
 .dock__tool svg { width: 17px; height: 17px; }
 
+/* ---------- Scroll progress ---------- */
+.scroll-progress {
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 auto;
+  height: 3px;
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: right center;
+  background: linear-gradient(90deg, var(--azure), var(--violet), var(--amber));
+  box-shadow: 0 0 12px var(--aurora-1);
+}
+
+:root[dir="ltr"] .scroll-progress__bar { transform-origin: left center; }
+
 @media (max-width: 460px) {
-  .dock { padding-inline: 0.5rem; }
   .dock__inner { gap: 0; padding: 0.3rem; }
   .dock a, .dock button { padding: 0.46rem 0.5rem; font-size: 0.78rem; }
   .dock__tool { width: 1.95rem; height: 1.95rem; font-size: 0.68rem; }
@@ -436,6 +551,37 @@ section { scroll-margin-top: 2rem; }
   line-height: 1.02;
 }
 
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.2rem;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.36rem 0.8rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: 999px;
+  background: var(--glass-fill);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.4;
+}
+
+.hero__badge--accent {
+  color: var(--azure);
+  border-color: color-mix(in srgb, var(--azure) 35%, transparent);
+}
+
+.hero__name-highlight {
+  color: var(--azure);
+  background: linear-gradient(110deg, var(--azure), var(--violet) 70%, var(--amber));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero .name-en {
   display: block;
   font-family: var(--font-display);
@@ -448,13 +594,52 @@ section { scroll-margin-top: 2rem; }
 }
 
 .hero__role {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
   font-size: var(--step-1);
-  color: var(--text-muted);
+  color: var(--azure);
+  font-family: var(--font-display);
   max-width: 34ch;
-  margin-top: 1.5rem;
-  font-weight: 300;
+  min-height: 2rem;
+  margin-top: 1.05rem;
+  font-weight: 500;
 }
 .hero__role b { color: var(--text); font-weight: 600; }
+
+:root[lang="ar"] .hero__role,
+:root[lang="ar"] .project__kicker,
+:root[lang="ar"] .project h3 {
+  font-family: "Thmanyah Sans", var(--font-display);
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--amber);
+  animation: cursor-blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink { to { visibility: hidden; } }
+
+.hero__summary {
+  max-width: 42ch;
+  margin-top: 0.55rem;
+  color: var(--text-muted);
+  font-size: var(--step-0);
+  line-height: 1.85;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.45rem;
+}
+
+.hero__actions .btn { min-height: 2.9rem; }
+.hero__btn-secondary { background: var(--glass-fill); }
 
 .chips {
   display: flex;
@@ -564,6 +749,27 @@ a.chip:hover {
 }
 .skill__mark svg { width: 17px; height: 17px; color: var(--text); }
 
+@media (hover: hover) {
+  .skill,
+  .tl,
+  .lang,
+  .project,
+  .cert {
+    transition: transform 0.3s cubic-bezier(.2,.9,.3,1),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+
+  .skill:hover,
+  .tl:hover,
+  .lang:hover,
+  .project:hover,
+  .cert:hover {
+    transform: translateY(-4px);
+    background: var(--glass-fill-2);
+  }
+}
+
 /* ---------- 10. Project ---------- */
 .project {
   display: grid;
@@ -582,8 +788,12 @@ a.chip:hover {
   color: var(--amber);
   letter-spacing: 0.05em;
   margin-bottom: 0.7rem;
-  direction: ltr;
   text-align: start;
+}
+
+.projects-list {
+  display: grid;
+  gap: 1.15rem;
 }
 
 .project h3 {
@@ -591,8 +801,12 @@ a.chip:hover {
   font-size: var(--step-2);
   font-weight: 500;
   letter-spacing: -0.02em;
-  direction: ltr;
   text-align: start;
+}
+
+.projects-list {
+  display: grid;
+  gap: 1.15rem;
 }
 
 .project__desc {
@@ -816,6 +1030,15 @@ a.chip:hover {
   display: grid;
   place-items: center;
 }
+.cert__image-button {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
 .cert__img img {
   height: auto;
   border-radius: 14px;
@@ -986,6 +1209,39 @@ footer small {
 }
 .reveal.is-in { opacity: 1; transform: none; }
 
+/* Stagger cards after their section enters the viewport. */
+.reveal.is-in .skill,
+.reveal.is-in .tl,
+.reveal.is-in .contact > a,
+.reveal.is-in .lang,
+.reveal.is-in > .project,
+.reveal.is-in > .cert {
+  animation: card-rise 0.6s cubic-bezier(.16,.84,.34,1) both;
+}
+
+.reveal.is-in .skill:nth-child(2),
+.reveal.is-in .tl:nth-child(2),
+.reveal.is-in .contact > a:nth-child(2),
+.reveal.is-in .lang:nth-child(2) { animation-delay: 0.08s; }
+
+.reveal.is-in .skill:nth-child(3),
+.reveal.is-in .tl:nth-child(3),
+.reveal.is-in .contact > a:nth-child(3) { animation-delay: 0.16s; }
+
+.reveal.is-in .skill:nth-child(4),
+.reveal.is-in .tl:nth-child(4),
+.reveal.is-in .contact > a:nth-child(4) { animation-delay: 0.24s; }
+
+.reveal.is-in .contact > a:nth-child(5) { animation-delay: 0.32s; }
+.reveal.is-in .contact > a:nth-child(6) { animation-delay: 0.4s; }
+.reveal.is-in .project,
+.reveal.is-in .cert { animation-delay: 0.08s; }
+
+@keyframes card-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
 /* If scripting is off, nothing stays invisible */
 .no-js .reveal { opacity: 1; transform: none; }
 
@@ -998,6 +1254,17 @@ footer small {
   }
   .reveal { opacity: 1; transform: none; }
   .rise { opacity: 1; transform: none; }
+  .reveal.is-in .skill,
+  .reveal.is-in .tl,
+  .reveal.is-in .contact > a,
+  .reveal.is-in .lang,
+  .reveal.is-in > .project,
+  .reveal.is-in > .cert {
+    animation: none;
+  }
+  .scroll-progress__bar { transition: none; }
+  .code-rain { display: none; }
+  .hero__cursor { animation: none; }
 }
 
 /* ---------- 17. Fallback when backdrop-filter is unsupported ---------- */
@@ -1014,7 +1281,7 @@ footer small {
 
 /* ---------- 18. Print ---------- */
 @media print {
-  .dock, .aurora, .grain, .lightbox, .skip { display: none !important; }
+  .dock, .aurora, .grain, .pointer-glow, .lightbox, .skip, .scroll-progress { display: none !important; }
   body { background: #fff; color: #000; }
   .glass {
     background: #fff;
