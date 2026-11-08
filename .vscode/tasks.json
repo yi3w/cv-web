@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start CV website",
+            "type": "shell",
+            "command": "npm run dev -- --host 127.0.0.1",
+            "options": {
+                "cwd": "${workspaceFolder}/cv-mustafa"
+            },
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": ".",
+                    "message": 1
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "VITE v.* ready in",
+                    "endsPattern": "Local:.*127.0.0.1:5173"
+                }
+            }
+        }
+    ]
+}
