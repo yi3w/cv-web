@@ -358,6 +358,7 @@ p { margin: 0; }
 .dock {
   position: fixed;
   z-index: 40;
+  font-family: "IBM Plex Sans Arabic", "Sora", sans-serif;
   top: calc(0.85rem + env(safe-area-inset-top));
   right: calc(0.85rem + env(safe-area-inset-right));
   left: auto;
@@ -413,18 +414,6 @@ p { margin: 0; }
   overflow: visible;
   filter: drop-shadow(0 2px 6px rgba(104, 160, 255, 0.28));
   transition: filter 0.25s ease, transform 0.25s ease, color 0.25s ease;
-}
-
-.dock a .icon { width: 19px; height: 19px; }
-.icon__accent {
-  stroke: var(--amber);
-  stroke-width: 2.2;
-  filter: drop-shadow(0 0 3px rgba(255, 180, 67, 0.55));
-}
-.dock a:hover .icon,
-.dock a[aria-current="true"] .icon {
-  filter: drop-shadow(0 0 9px rgba(104, 160, 255, 0.78));
-  transform: translateY(-2px) scale(1.08);
 }
 
 .dock a:hover,
@@ -490,7 +479,6 @@ p { margin: 0; }
   .dock__tool { width: 1.95rem; height: 1.95rem; font-size: 0.68rem; }
   .dock__tool--language { width: auto; }
   .dock__tool svg { width: 15px; height: 15px; }
-  .dock a .icon { width: 17px; height: 17px; }
   .dock__sep { margin-inline: 0.12rem; }
 }
 
@@ -590,13 +578,6 @@ section { scroll-margin-top: 2rem; }
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.02;
-}
-
-.hero__name-highlight {
-  color: var(--azure);
-  background: linear-gradient(110deg, var(--azure), var(--violet) 70%, var(--amber));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero__role {
@@ -1021,6 +1002,34 @@ section { scroll-margin-top: 2rem; }
 }
 :root[dir="rtl"] .tl .en { font-family: var(--font-body); }
 
+.campus-video {
+  margin: clamp(1.5rem, 3.5vw, 2.4rem) 0 0;
+  padding: clamp(0.55rem, 1.6vw, 0.9rem);
+  border-radius: var(--r-lg);
+}
+
+.campus-video video {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 680px);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #020817;
+  border-radius: calc(var(--r-lg) - 8px);
+}
+
+.campus-video figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  padding: 0.85rem 0.35rem 0.15rem;
+}
+
+.campus-video figcaption strong { font-weight: 600; }
+.campus-video figcaption span { color: var(--text-muted); font-size: var(--step--1); }
+
 /* ---------- 12. Certificate ---------- */
 .cert {
   display: grid;
@@ -1153,12 +1162,9 @@ section { scroll-margin-top: 2rem; }
   display: block;
   font-family: var(--font-display);
   font-size: 0.92rem;
-  direction: ltr;
-  text-align: start;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: var(--text-muted);
 }
+:root[dir="rtl"] .contact__txt span { font-family: var(--font-body); }
 
 /* ---------- 14. Languages ---------- */
 .langs {

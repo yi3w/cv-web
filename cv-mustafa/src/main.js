@@ -1,13 +1,13 @@
 const translations = {
   ar: {
     nav: ['نبذة', 'المهارات', 'المشاريع', 'المسار', 'تواصل'],
-    roles: ['طالب هندسة برمجيات', 'مطوّر ويب', 'مصوّر فوتوغرافي'],
-    heroSummary: 'أجمع بين شغفي بالتقنية والتصوير، وأبني تجارب ويب تفاعلية.',
+    roles: ['طالب علوم برامجيات', 'مطوّر ويب', 'مصوّر فوتوغرافي'],
+    heroSummary: 'شغوف بالبرمجة والتصوير، ومفتون بكل جديد في عالم التقنية.',
     projectsCta: 'شاهد أعمالي',
     contactCta: 'تواصل معي',
     profileAlt: 'مصطفى صفاء عبد الصاحب',
     title: 'مصطفى صفاء عبد الصاحب — السيرة الذاتية',
-    description: 'مصطفى صفاء عبد الصاحب — طالب هندسة برمجيات في جامعة واسط، مطوّر ويب ومصوّر فوتوغرافي.',
+    description: 'مصطفى صفاء عبد الصاحب — طالب بكالوريوس في قسم علوم البرامجيات بجامعة واسط، مهتم بالبرمجة والتقنية والتصوير.',
     navLabel: 'التنقل',
     themeLabel: 'تبديل المظهر',
     langLabel: 'التبديل إلى الإنجليزية',
@@ -15,13 +15,12 @@ const translations = {
     github: 'حساب GitHub',
     about: 'نبذة',
     aboutEn: 'نبذة شخصية',
-    aboutText: 'طالب في كلية علوم الحاسوب وتكنولوجيا المعلومات بجامعة واسط، تخصص البرمجيات. أعمل على تطوير تطبيقات الويب الحديثة، وتوظيف أدوات الذكاء الاصطناعي في عملي.',
-    aboutEnglish: 'Software engineering student at the College of Computer Science and Information Technology, University of Wasit. My interest in technology and photography continues to grow, and I treat every new tool as something to master rather than merely try. Today I focus on web development and on applying AI tools across my academic and practical work.',
+    aboutText: 'طالب بكالوريوس في قسم علوم البرامجيات بكلية علوم الحاسوب وتكنولوجيا المعلومات في جامعة واسط، وشغوف بالبرمجة والتصوير والتقنية.',
+    aboutEnglish: 'Bachelor’s student in the Department of Software Sciences at the College of Computer Science and Information Technology, University of Wasit. Passionate about programming, photography, and technology.',
     skills: 'المهارات',
     skillsEn: 'المهارات التقنية',
     web: 'تطوير الويب',
     ai: 'هندسة أوامر الذكاء الاصطناعي',
-    office: 'حزمة مايكروسوفت أوفيس',
     photography: 'التصوير الفوتوغرافي',
     work: 'الأعمال',
     workEn: 'مشاريع مختارة',
@@ -30,7 +29,6 @@ const translations = {
     skillDetails: {
       web: 'HTML5 · CSS3 · JavaScript',
       ai: 'معتمد من مركز دبي للذكاء الاصطناعي',
-      office: 'Word · Excel · PowerPoint',
       photography: 'تصوير فوتوغرافي احترافي',
     },
     projects: [
@@ -48,47 +46,37 @@ const translations = {
     zoom: 'تكبير الشهادة',
     close: 'إغلاق',
     path: 'المسار',
-    pathEn: 'التعليم والخبرة',
-    timelineDetails: [
-      'تصوير فوتوغرافي احترافي · @vray_photography',
-      'طالب هندسة البرمجيات · كلية علوم الحاسوب وتكنولوجيا المعلومات',
-      'مركز دبي للذكاء الاصطناعي · مؤسسة دبي للمستقبل',
-      'HTML5 · CSS3 · JavaScript · Netlify',
-    ],
-    beginning: 'بداية مسيرتي في عالم التصوير والتقنية',
-    beginningText: 'من هنا بدأت رحلتي في التصوير والتقنية، وما زلت أطور خبرتي فيهما.',
-    beginningEnglishText: 'This is where my journey in photography and technology began, and I continue to grow in both fields.',
+    pathEn: 'التعليم والتخصص',
+    universityYear: '2024 — إلى الآن',
     university: 'جامعة واسط',
-    universityText: 'طالب بكالوريوس في هندسة البرمجيات، كلية علوم الحاسوب وتكنولوجيا المعلومات.',
-    universityEnglishText: "Bachelor's degree student in Software Engineering at the College of Computer Science and IT.",
-    promptCertificate: 'شهادة هندسة الأوامر',
-    promptText: 'أتممتُ برنامج «مليون خبير لأوامر الذكاء الاصطناعي».',
-    promptEnglishText: 'Completed the 1 Million Prompters programme.',
-    launch: 'إطلاق Viray Studio',
-    launchText: 'أول تطبيق ويب أبنيه بالكامل وأنشره على الإنترنت.',
-    launchEnglishText: 'The first web application I built end to end and deployed publicly.',
-    native: 'اللغة الأم',
-    englishLevel: 'قراءة وكتابة ومحادثة',
+    universityText: 'طالب بكالوريوس في قسم علوم البرامجيات، كلية علوم الحاسوب وتكنولوجيا المعلومات.',
+    universityEnglishText: "Bachelor's student in the Department of Software Sciences, College of Computer Science and Information Technology.",
+    promptCertificate: '2025',
+    promptText: 'شهادة هندسة الأوامر.',
+    promptEnglishText: 'Prompt Engineering Certificate.',
+    specializationYear: '2026',
+    specializationText: 'تخصصت في الفرع الجديد: برمجة الأنظمة الطبية الذكية الحديثة.',
+    specializationEnglishText: 'Specialized in the new field of modern intelligent medical systems programming.',
+    campusVideoHeading: 'كلية علوم الحاسوب وتكنولوجيا المعلومات — جامعة واسط',
     contact: 'تواصل',
     contactEn: 'معلومات التواصل',
-    email: 'الأيميل',
-    phone: 'واتساب / هاتف',
-    phoneText: '٠٧٨٣ ٢٩١ ٦٥٥٢',
+    email: 'البريد الإلكتروني',
+    phone: 'واتساب',
     programming: 'الحلول البرمجية',
     photographyWork: 'أعمال التصوير',
     personal: 'حساب شخصي',
     skip: 'تخطَّ إلى المحتوى',
-    footer: 'صمم بواسطة السيد',
+    footer: 'جميع حقوق التصميم محفوظة لدى مصطفى صفاء',
   },
   en: {
     nav: ['About', 'Skills', 'Projects', 'Path', 'Contact'],
-    roles: ['Software Engineering Student', 'Web Developer', 'Photographer'],
-    heroSummary: 'Bringing technology and photography together to create thoughtful web experiences.',
+    roles: ['Software Sciences Student', 'Web Developer', 'Photographer'],
+    heroSummary: 'Passionate about programming and photography, and fascinated by the latest in technology.',
     projectsCta: 'Explore my work',
     contactCta: 'Get in touch',
     profileAlt: 'Mustafa Safaa AbdulAlsahib',
     title: 'Mustafa Safaa AbdulAlsahib — Curriculum Vitae',
-    description: 'Mustafa Safaa AbdulAlsahib — software engineering student at the University of Wasit, web developer and photographer.',
+    description: 'Mustafa Safaa AbdulAlsahib — bachelor’s student in Software Sciences at the University of Wasit, passionate about programming, technology, and photography.',
     navLabel: 'Navigation',
     themeLabel: 'Toggle theme',
     langLabel: 'Switch to Arabic',
@@ -96,13 +84,12 @@ const translations = {
     github: 'GitHub',
     about: 'About',
     aboutEn: 'Profile',
-    aboutText: 'Software engineering student and web developer with an interest in practical AI tools and photography.',
-    aboutEnglish: 'Software engineering student at the College of Computer Science and Information Technology, University of Wasit. My interest in technology and photography continues to grow, and I treat every new tool as something to master rather than merely try. Today I focus on web development and on applying AI tools across my academic and practical work.',
+    aboutText: 'Bachelor’s student in the Department of Software Sciences at the College of Computer Science and Information Technology, University of Wasit. Passionate about programming, photography, and technology.',
+    aboutEnglish: 'Bachelor’s student in the Department of Software Sciences at the College of Computer Science and Information Technology, University of Wasit. Passionate about programming, photography, and technology.',
     skills: 'Skills',
     skillsEn: 'Technical skills',
     web: 'Web development',
     ai: 'AI prompt engineering',
-    office: 'Microsoft Office suite',
     photography: 'Photography',
     work: 'Work',
     workEn: 'Selected projects',
@@ -111,7 +98,6 @@ const translations = {
     skillDetails: {
       web: 'HTML5 · CSS3 · JavaScript',
       ai: 'Certified by the Dubai Centre for Artificial Intelligence',
-      office: 'Word · Excel · PowerPoint',
       photography: 'Professional photography',
     },
     projects: [
@@ -129,37 +115,27 @@ const translations = {
     zoom: 'View larger',
     close: 'Close',
     path: 'Path',
-    pathEn: 'Education & experience',
-    timelineDetails: [
-      'Professional photography practice · @vray_photography',
-      'Software Engineering student · College of Computer Science & IT',
-      'Dubai Centre for Artificial Intelligence · Dubai Future Foundation',
-      'HTML5 · CSS3 · JavaScript · Netlify',
-    ],
-    beginning: 'The beginning of my journey in photography and technology',
-    beginningText: 'This is where my journey in photography and technology began, and I continue to grow in both fields.',
-    beginningEnglishText: 'This is where my journey in photography and technology began, and I continue to grow in both fields.',
+    pathEn: 'Education & specialization',
+    universityYear: '2024 — Present',
     university: 'University of Wasit',
-    universityText: "Bachelor's degree student in Software Engineering at the College of Computer Science and IT.",
-    universityEnglishText: "Bachelor's degree student in Software Engineering at the College of Computer Science and IT.",
-    promptCertificate: 'Prompt engineering certificate',
-    promptText: 'Completed the 1 Million Prompters programme.',
-    promptEnglishText: 'Completed the 1 Million Prompters programme.',
-    launch: 'Viray Studio goes live',
-    launchText: 'The first web application I built end to end and deployed publicly.',
-    launchEnglishText: 'The first web application I built end to end and deployed publicly.',
-    native: 'Native',
-    englishLevel: 'Reading, writing, conversation',
+    universityText: "Bachelor's student in the Department of Software Sciences, College of Computer Science and Information Technology.",
+    universityEnglishText: "Bachelor's student in the Department of Software Sciences, College of Computer Science and Information Technology.",
+    promptCertificate: '2025',
+    promptText: 'Prompt Engineering Certificate.',
+    promptEnglishText: 'Prompt Engineering Certificate.',
+    specializationYear: '2026',
+    specializationText: 'Specialized in the new field of modern intelligent medical systems programming.',
+    specializationEnglishText: 'Specialized in the new field of modern intelligent medical systems programming.',
+    campusVideoHeading: 'College of Computer Science and Information Technology — University of Wasit',
     contact: 'Contact',
     contactEn: 'Get in touch',
     email: 'Email',
-    phone: 'WhatsApp / phone',
-    phoneText: '0783 291 6552',
+    phone: 'WhatsApp',
     programming: 'Programming solutions',
     photographyWork: 'Photography work',
     personal: 'Personal account',
     skip: 'Skip to content',
-    footer: 'Designed by Al-Sayed',
+    footer: 'All design rights reserved by Mustafa Safaa',
   },
 };
 
@@ -168,21 +144,17 @@ const icons = {
   mail: '<path d="M3 7.5 12 13l9-5.5"/><rect x="3" y="5" width="18" height="14" rx="3"/>',
   code: '<path d="m8 17-5-5 5-5M16 7l5 5-5 5"/>',
   spark: '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.4"/>',
-  office: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H17l3 3v14.5a.5.5 0 0 1-.5.5h-13A2.5 2.5 0 0 1 4 18.5Z"/><path d="M8 9h7M8 13h7M8 17h4"/>',
   camera: '<path d="M3 8.5A2.5 2.5 0 0 1 5.5 6H8l1.4-2h5.2L16 6h2.5A2.5 2.5 0 0 1 21 8.5v8A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5Z"/><circle cx="12" cy="12.2" r="3.4"/>',
   github: '<path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>',
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>',
   user: '<circle cx="12" cy="8.2" r="3.7"/><path d="M4.5 20.2a7.5 7.5 0 0 1 15 0"/>',
-  navAbout: '<circle cx="12" cy="7.5" r="3.5"/><path d="M4 21a8 8 0 0 1 16 0H4Z"/><path class="icon__accent" d="M18.2 4.7 20 3m-.5 4.1 2.2-.1"/>',
-  navSkills: '<path d="m12 2 2.5 6.3L21 11l-6.5 2.7L12 20l-2.5-6.3L3 11l6.5-2.7L12 2Z"/><path class="icon__accent" d="m19 15 .8 1.8 1.7.7-1.7.8-.8 1.7-.7-1.7-1.8-.8 1.8-.7L19 15Z"/>',
-  navWork: '<path d="M3 7.5c0-1 .8-1.8 1.8-1.8h5.1l2 2h7.3c1 0 1.8.8 1.8 1.8v8.7c0 1-.8 1.8-1.8 1.8H4.8c-1 0-1.8-.8-1.8-1.8V7.5Z"/><path class="icon__accent" d="M4 10h16"/>',
-  navPath: '<path d="M12 22s8-7.2 8-13a8 8 0 1 0-16 0c0 5.8 8 13 8 13Z"/><circle cx="12" cy="9" r="2.7" fill="var(--bg-deep)" stroke="none"/>',
-  navContact: '<path d="M2 10.1 21.5 2l-7.9 19.7-3.8-7.8L2 10.1Z"/><path class="icon__accent" d="m9.8 13.9 6.1-6.1"/>',
 };
 
 const app = document.getElementById('app');
 const profileImage = new URL('../assets/profile.jpg', import.meta.url).href;
 const certificateImage = new URL('../assets/certificate.jpg', import.meta.url).href;
+const universityVideo = new URL('../assets/university-wasit.mp4', import.meta.url).href;
+const universityPoster = new URL('../assets/university-wasit-poster.jpg', import.meta.url).href;
 const readStorage = (key) => {
   try { return window.localStorage.getItem(key); } catch { return null; }
 };
@@ -192,7 +164,7 @@ const writeStorage = (key, value) => {
 let nextIconId = 0;
 const icon = (name) => {
   const gradientId = `icon-gradient-${nextIconId++}`;
-  const isFilled = name === 'github' || name.startsWith('nav');
+  const isFilled = name === 'github';
   return `<svg class="icon icon--${name}" viewBox="0 0 24 24" fill="${isFilled ? `url(#${gradientId})` : 'none'}" stroke="${isFilled ? 'none' : `url(#${gradientId})`}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><defs><linearGradient id="${gradientId}" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse"><stop stop-color="var(--azure)"/><stop offset="1" stop-color="var(--amber)"/></linearGradient></defs>${icons[name]}</svg>`;
 };
 let language = readStorage('cv-lang') === 'en' ? 'en' : 'ar';
@@ -212,24 +184,22 @@ function render() {
   const t = translations[language];
   const isArabic = language === 'ar';
   const timeline = [
-    { title: t.beginning, text: isArabic ? t.beginningText : t.beginningEnglishText, detail: t.timelineDetails[0] },
-    { title: t.university, text: isArabic ? t.universityText : t.universityEnglishText, detail: t.timelineDetails[1] },
-    { title: t.promptCertificate, text: isArabic ? t.promptText : t.promptEnglishText, detail: t.timelineDetails[2] },
-    { title: t.launch, text: isArabic ? t.launchText : t.launchEnglishText, detail: t.timelineDetails[3] },
+    { title: t.universityYear, text: isArabic ? t.universityText : t.universityEnglishText, detail: t.university },
+    { title: t.promptCertificate, text: isArabic ? t.promptText : t.promptEnglishText },
+    { title: t.specializationYear, text: isArabic ? t.specializationText : t.specializationEnglishText },
   ];
   const skills = [
     [t.web, t.skillDetails.web, 'code'],
     [t.ai, t.skillDetails.ai, 'spark'],
-    [t.office, t.skillDetails.office, 'office'],
     [t.photography, t.skillDetails.photography, 'camera'],
   ];
   const contacts = [
-    { href: 'mailto:std2025.mabdul25@uowasit.edu.iq', title: t.email, text: 'std2025.mabdul25@uowasit.edu.iq', icon: 'mail' },
-    { href: 'https://wa.me/9647832916552', title: t.phone, text: t.phoneText, icon: 'user', external: true },
-    { href: 'https://github.com/yi3w', title: t.github, text: 'github.com/yi3w', icon: 'github', external: true },
-    { href: 'https://www.instagram.com/prog_alrafidain', title: t.programming, text: '@prog_alrafidain', icon: 'instagram', external: true },
-    { href: 'https://www.instagram.com/vray_photography', title: t.photographyWork, text: '@vray_photography', icon: 'camera', external: true },
-    { href: 'https://www.instagram.com/yi3w', title: t.personal, text: '@yi3w', icon: 'user', external: true },
+    { href: 'mailto:std2025.mabdul25@uowasit.edu.iq', title: t.email, icon: 'mail' },
+    { href: 'https://wa.me/9647832916552', title: t.phone, icon: 'user', external: true },
+    { href: 'https://github.com/yi3w', title: t.github, icon: 'github', external: true },
+    { href: 'https://www.instagram.com/prog_alrafidain', title: t.programming, icon: 'instagram', external: true },
+    { href: 'https://www.instagram.com/vray_photography', title: t.photographyWork, icon: 'camera', external: true },
+    { href: 'https://www.instagram.com/yi3w', title: t.personal, icon: 'user', external: true },
   ];
   document.documentElement.lang = language;
   document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
@@ -239,6 +209,7 @@ function render() {
   document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#000926' : '#D6E6F3';
   document.querySelector('meta[property="og:title"]').content = t.title;
   document.querySelector('meta[property="og:description"]').content = t.description;
+  document.querySelector('meta[property="og:image"]').content = profileImage;
   document.querySelector('meta[property="og:locale"]').content = isArabic ? 'ar_IQ' : 'en_US';
   writeStorage('cv-lang', language);
   writeStorage('cv-theme', theme);
@@ -250,7 +221,7 @@ function render() {
     <div class="grain" aria-hidden="true"></div><div class="pointer-glow" aria-hidden="true"></div>
     <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__bar" id="scrollProgress"></span></div>
     <nav class="dock" id="dock" aria-label="${t.navLabel}"><div class="dock__inner glass">
-      ${['about', 'skills', 'work', 'path', 'contact'].map((id, i) => `<a href="#${id}" aria-current="${activeSection === id}">${icon(`nav${id[0].toUpperCase()}${id.slice(1)}`)}<span>${t.nav[i]}</span></a>`).join('')}
+      ${['about', 'skills', 'work', 'path', 'contact'].map((id, i) => `<a href="#${id}" aria-current="${activeSection === id}"><span>${t.nav[i]}</span></a>`).join('')}
       <span class="dock__sep" aria-hidden="true"></span>
       <button class="dock__tool dock__tool--language" type="button" data-action="language" aria-label="${t.langLabel}" title="${t.langLabel}">${t.langText}</button>
       <button class="dock__tool" type="button" data-action="theme" aria-label="${t.themeLabel}" title="${t.themeLabel}">${theme === 'dark'
@@ -259,7 +230,7 @@ function render() {
     </div></nav>
     <main class="shell">
       <header class="hero" id="top"><div class="hero__grid"><div>
-        <h1 class="rise"><span>${isArabic ? 'مصطفى صفاء ' : 'Mustafa '}<span class="hero__name-highlight">${isArabic ? 'عبد الصاحب' : 'Safaa AbdulAlsahib'}</span></span></h1>
+        <h1 class="rise"><span>${isArabic ? 'مصطفى صفاء عبد الصاحب' : 'Mustafa Safaa AbdulAlsahib'}</span></h1>
         <p class="hero__role" aria-live="off" aria-label="${t.roles.join(', ')}" dir="${isArabic ? 'rtl' : 'ltr'}"><span id="typedRole"></span><span class="hero__cursor" aria-hidden="true"></span></p>
         <p class="hero__summary">${t.heroSummary}</p>
         <div class="hero__actions"><a class="btn btn--accent" href="#work">${icon('code')}<span>${t.projectsCta}</span></a><a class="btn hero__btn-secondary" href="#contact">${icon('mail')}<span>${t.contactCta}</span></a></div>
@@ -269,8 +240,8 @@ function render() {
         <section id="skills" data-section class="reveal"><div class="head"><h2>${t.skills}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.skillsEn}</span></div><div class="skills">${skills.map(([title, detail, name]) => `<article class="skill glass"><div class="skill__mark">${icon(name)}</div><h3>${title}</h3><p dir="${isArabic ? 'rtl' : 'ltr'}">${detail}</p></article>`).join('')}</div></section>
         <section id="work" data-section class="reveal"><div class="head"><h2>${t.work}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.workEn}</span></div><div class="projects-list">${t.projects.map((project) => `<article class="project glass"><div class="project__body"><div class="project__kicker" dir="${isArabic ? 'rtl' : 'ltr'}">${project.category}</div><h3>${project.name}</h3><p class="project__desc">${project.description}</p><div class="tags">${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}</div><div class="actions"><a class="btn btn--accent" href="${project.url}" target="_blank" rel="noopener noreferrer">${icon('external')}<span>${t.openSite}</span></a></div></div><div class="project__shot"><img class="project__screenshot" src="${project.image}" alt="${t.projectPreview}: ${project.name}" loading="lazy" width="1000" height="541"></div></article>`).join('')}</div></section>
         <section id="cert" data-section class="reveal"><div class="head"><h2>${t.certification}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.certificationEn}</span></div><article class="cert glass"><div class="cert__img"><button class="cert__image-button" type="button" data-action="open-certificate" aria-label="${t.zoom}"><img src="${certificateImage}" alt="${isArabic ? t.certTitle : t.certEnglish}" width="1206" height="847" loading="lazy"></button></div><div class="cert__body"><h3>${isArabic ? t.certTitle : t.certEnglish}</h3><p class="cert__meta"><span>${isArabic ? t.certDate : t.certDateEnglish}</span><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.certOrganization}</span></p><div class="actions"><button class="btn" type="button" data-action="open-certificate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8.5v5M8.5 11h5"/></svg><span>${t.zoom}</span></button></div></div></article></section>
-        <section id="path" data-section class="reveal"><div class="head"><h2>${t.path}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.pathEn}</span></div><div class="timeline">${timeline.map((item) => `<article class="tl glass"><h3>${item.title}</h3><p>${item.text}</p><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${item.detail}</span></article>`).join('')}</div><div class="langs"><div class="lang glass"><b>${isArabic ? 'العربية' : 'Arabic'}</b><span>${t.native}</span></div><div class="lang glass"><b>${isArabic ? 'الإنجليزية' : 'English'}</b><span>${t.englishLevel}</span></div></div></section>
-        <section id="contact" data-section class="reveal"><div class="head"><h2>${t.contact}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.contactEn}</span></div><div class="contact">${contacts.map((item) => `<a class="glass" href="${item.href}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><span class="contact__ic">${icon(item.icon)}</span><span class="contact__txt"><b>${item.title}</b><span>${item.text}</span></span></a>`).join('')}</div></section>
+        <section id="path" data-section class="reveal"><div class="head"><h2>${t.path}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.pathEn}</span></div><div class="timeline">${timeline.map((item) => `<article class="tl glass"><h3>${item.title}</h3><p>${item.text}</p>${item.detail ? `<span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${item.detail}</span>` : ''}</article>`).join('')}</div><figure class="campus-video glass"><video src="${universityVideo}" poster="${universityPoster}" autoplay muted loop playsinline preload="auto" aria-label="${t.campusVideoHeading}"></video><figcaption><strong>${t.campusVideoHeading}</strong></figcaption></figure></section>
+        <section id="contact" data-section class="reveal"><div class="head"><h2>${t.contact}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.contactEn}</span></div><div class="contact">${contacts.map((item) => `<a class="glass" href="${item.href}" aria-label="${item.title}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><span class="contact__ic">${icon(item.icon)}</span><span class="contact__txt"><b>${item.title}</b></span></a>`).join('')}</div></section>
       </div><footer><div class="sig">${t.footer}</div></footer>
     </main>
     <div class="lightbox" role="dialog" aria-modal="true" aria-label="${t.certification}" aria-hidden="true" data-open="false" id="lightbox"><button class="lightbox__close" type="button" data-action="close-certificate" aria-label="${t.close}">&times;</button><img src="${certificateImage}" alt="${isArabic ? t.certTitle : t.certEnglish}" width="1206" height="847"></div>`;
