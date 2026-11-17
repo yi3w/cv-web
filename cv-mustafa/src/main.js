@@ -2,13 +2,15 @@ const translations = {
   ar: {
     nav: ['نبذة', 'المهارات', 'المشاريع', 'المسار', 'تواصل'],
     roles: ['طالب علوم برامجيات', 'مطوّر ويب', 'مصوّر فوتوغرافي'],
-    heroSummary: 'شغوف بالبرمجة والتصوير، ومفتون بكل جديد في عالم التقنية.',
+    heroSummary: 'شغوف بالبرمجة والتصوير، وأسعى إلى التعلم والاكتشاف والتطوير في عالم الحاسوب والتقنية.',
+    continueJourney: 'اكتشف الرحلة',
     projectsCta: 'شاهد أعمالي',
     contactCta: 'تواصل معي',
     profileAlt: 'مصطفى صفاء عبد الصاحب',
     title: 'مصطفى صفاء عبد الصاحب — السيرة الذاتية',
     description: 'مصطفى صفاء عبد الصاحب — طالب بكالوريوس في قسم علوم البرامجيات بجامعة واسط، مهتم بالبرمجة والتقنية والتصوير.',
     navLabel: 'التنقل',
+    preferencesLabel: 'إعدادات اللغة والمظهر',
     themeLabel: 'تبديل المظهر',
     langLabel: 'التبديل إلى الإنجليزية',
     langText: 'إنجليزي',
@@ -71,13 +73,15 @@ const translations = {
   en: {
     nav: ['About', 'Skills', 'Projects', 'Path', 'Contact'],
     roles: ['Software Sciences Student', 'Web Developer', 'Photographer'],
-    heroSummary: 'Passionate about programming and photography, and fascinated by the latest in technology.',
+    heroSummary: 'Passionate about programming and photography, I strive to keep learning, exploring, and growing in computing and technology.',
+    continueJourney: 'Scroll to explore',
     projectsCta: 'Explore my work',
     contactCta: 'Get in touch',
     profileAlt: 'Mustafa Safaa AbdulAlsahib',
     title: 'Mustafa Safaa AbdulAlsahib — Curriculum Vitae',
     description: 'Mustafa Safaa AbdulAlsahib — bachelor’s student in Software Sciences at the University of Wasit, passionate about programming, technology, and photography.',
     navLabel: 'Navigation',
+    preferencesLabel: 'Language and appearance settings',
     themeLabel: 'Toggle theme',
     langLabel: 'Switch to Arabic',
     langText: 'Arabic',
@@ -150,6 +154,11 @@ const icons = {
   user: '<circle cx="12" cy="8.2" r="3.7"/><path d="M4.5 20.2a7.5 7.5 0 0 1 15 0"/>',
 };
 
+const preferenceToggleIcons = {
+  closed: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="12" x="3" y="6" rx="6"/><circle cx="9" cy="12" r="2.7"/></svg>',
+  open: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="12" x="3" y="6" rx="6"/><circle cx="15" cy="12" r="2.7"/></svg>',
+};
+
 const app = document.getElementById('app');
 const profileImage = new URL('../assets/profile.jpg', import.meta.url).href;
 const certificateImage = new URL('../assets/certificate.jpg', import.meta.url).href;
@@ -173,9 +182,12 @@ if (theme !== 'dark' && theme !== 'light') {
   theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 let activeSection = 'about';
+document.documentElement.dataset.sceneChapter = activeSection;
 let typedRoleTimer;
 let revealObserver;
 let activeObserver;
+let finalCaptureArmed = true;
+let captureSequenceTimeout;
 let lastFocusedElement;
 let previousBodyOverflow;
 let previousBodyPadding;
@@ -216,34 +228,45 @@ function render() {
 
   app.innerHTML = `
     <a class="skip" href="#about">${t.skip}</a>
-    <div class="code-rain" aria-hidden="true"><span>01 · 10 · 11 · { } · &lt;/&gt; · 01 · 10 · 11 · { } · &lt;/&gt; · 01</span><span>00 · 01 · 10 · [ ] · 11 · &lt;/&gt; · 00 · 01 · 10 · [ ] · 11</span><span>10 · 11 · { } · 00 · 01 · &lt;/&gt; · 10 · 11 · { } · 00 · 01</span><span>11 · 00 · 01 · [ ] · 10 · &lt;/&gt; · 11 · 00 · 01 · [ ] · 10</span><span>01 · { } · 10 · 11 · 00 · &lt;/&gt; · 01 · { } · 10 · 11 · 00</span></div>
     <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
     <div class="grain" aria-hidden="true"></div><div class="pointer-glow" aria-hidden="true"></div>
     <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__bar" id="scrollProgress"></span></div>
     <nav class="dock" id="dock" aria-label="${t.navLabel}"><div class="dock__inner glass">
       ${['about', 'skills', 'work', 'path', 'contact'].map((id, i) => `<a href="#${id}" aria-current="${activeSection === id}"><span>${t.nav[i]}</span></a>`).join('')}
       <span class="dock__sep" aria-hidden="true"></span>
+      <button class="dock__tool dock__preferences-toggle" type="button" data-action="preferences" aria-label="${t.preferencesLabel}" title="${t.preferencesLabel}" aria-expanded="false" aria-controls="dockPreferencesPanel">
+        ${preferenceToggleIcons.closed}
+      </button>
+    </div></nav>
+    <div class="dock__preferences-panel glass" id="dockPreferencesPanel" role="group" aria-label="${t.preferencesLabel}" hidden>
       <button class="dock__tool dock__tool--language" type="button" data-action="language" aria-label="${t.langLabel}" title="${t.langLabel}">${t.langText}</button>
       <button class="dock__tool" type="button" data-action="theme" aria-label="${t.themeLabel}" title="${t.themeLabel}">${theme === 'dark'
         ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>'
         : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>'}</button>
-    </div></nav>
+    </div>
     <main class="shell">
       <header class="hero" id="top"><div class="hero__grid"><div>
         <h1 class="rise"><span>${isArabic ? 'مصطفى صفاء عبد الصاحب' : 'Mustafa Safaa AbdulAlsahib'}</span></h1>
         <p class="hero__role" aria-live="off" aria-label="${t.roles.join(', ')}" dir="${isArabic ? 'rtl' : 'ltr'}"><span id="typedRole"></span><span class="hero__cursor" aria-hidden="true"></span></p>
         <p class="hero__summary">${t.heroSummary}</p>
         <div class="hero__actions"><a class="btn btn--accent" href="#work">${icon('code')}<span>${t.projectsCta}</span></a><a class="btn hero__btn-secondary" href="#contact">${icon('mail')}<span>${t.contactCta}</span></a></div>
-      </div><div class="portrait glass rise"><img src="${profileImage}" alt="${t.profileAlt}" width="900" height="1601" fetchpriority="high"></div></div></header>
+      </div><div class="portrait glass rise"><img src="${profileImage}" alt="${t.profileAlt}" width="900" height="1601" fetchpriority="high"></div></div><a class="scroll-cue" href="#about"><span>${t.continueJourney}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></a></header>
       <div class="stack">
         <section id="about" data-section class="reveal${activeSection === 'about' ? ' is-in' : ''}"><div class="head"><h2>${t.about}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.aboutEn}</span></div><div class="glass panel"><p class="${isArabic ? 'lede' : 'lede-en'}" dir="${isArabic ? 'rtl' : 'ltr'}">${isArabic ? t.aboutText : t.aboutEnglish}</p></div></section>
         <section id="skills" data-section class="reveal"><div class="head"><h2>${t.skills}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.skillsEn}</span></div><div class="skills">${skills.map(([title, detail, name]) => `<article class="skill glass"><div class="skill__mark">${icon(name)}</div><h3>${title}</h3><p dir="${isArabic ? 'rtl' : 'ltr'}">${detail}</p></article>`).join('')}</div></section>
         <section id="work" data-section class="reveal"><div class="head"><h2>${t.work}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.workEn}</span></div><div class="projects-list">${t.projects.map((project) => `<article class="project glass"><div class="project__body"><div class="project__kicker" dir="${isArabic ? 'rtl' : 'ltr'}">${project.category}</div><h3>${project.name}</h3><p class="project__desc">${project.description}</p><div class="tags">${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join('')}</div><div class="actions"><a class="btn btn--accent" href="${project.url}" target="_blank" rel="noopener noreferrer">${icon('external')}<span>${t.openSite}</span></a></div></div><div class="project__shot"><img class="project__screenshot" src="${project.image}" alt="${t.projectPreview}: ${project.name}" loading="lazy" width="1000" height="541"></div></article>`).join('')}</div></section>
         <section id="cert" data-section class="reveal"><div class="head"><h2>${t.certification}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.certificationEn}</span></div><article class="cert glass"><div class="cert__img"><button class="cert__image-button" type="button" data-action="open-certificate" aria-label="${t.zoom}"><img src="${certificateImage}" alt="${isArabic ? t.certTitle : t.certEnglish}" width="1206" height="847" loading="lazy"></button></div><div class="cert__body"><h3>${isArabic ? t.certTitle : t.certEnglish}</h3><p class="cert__meta"><span>${isArabic ? t.certDate : t.certDateEnglish}</span><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.certOrganization}</span></p><div class="actions"><button class="btn" type="button" data-action="open-certificate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8.5v5M8.5 11h5"/></svg><span>${t.zoom}</span></button></div></div></article></section>
-        <section id="path" data-section class="reveal"><div class="head"><h2>${t.path}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.pathEn}</span></div><div class="timeline">${timeline.map((item) => `<article class="tl glass"><h3>${item.title}</h3><p>${item.text}</p>${item.detail ? `<span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${item.detail}</span>` : ''}</article>`).join('')}</div><figure class="campus-video glass"><video src="${universityVideo}" poster="${universityPoster}" autoplay muted loop playsinline preload="auto" aria-label="${t.campusVideoHeading}"></video><figcaption><strong>${t.campusVideoHeading}</strong></figcaption></figure></section>
+        <section id="path" data-section class="reveal"><div class="head"><h2>${t.path}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.pathEn}</span></div><div class="timeline">${timeline.map((item) => `<article class="tl glass"><h3>${item.title}</h3><p>${item.text}</p>${item.detail ? `<span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${item.detail}</span>` : ''}</article>`).join('')}</div><figure class="campus-video glass"><video src="${universityVideo}" poster="${universityPoster}" controls playsinline preload="none" aria-label="${t.campusVideoHeading}"></video><figcaption><strong>${t.campusVideoHeading}</strong></figcaption></figure></section>
         <section id="contact" data-section class="reveal"><div class="head"><h2>${t.contact}</h2><span class="en" dir="${isArabic ? 'rtl' : 'ltr'}">${t.contactEn}</span></div><div class="contact">${contacts.map((item) => `<a class="glass" href="${item.href}" aria-label="${item.title}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><span class="contact__ic">${icon(item.icon)}</span><span class="contact__txt"><b>${item.title}</b></span></a>`).join('')}</div></section>
       </div><footer><div class="sig">${t.footer}</div></footer>
     </main>
+      <div class="capture-sequence" id="finalCapture" aria-hidden="true" hidden>
+        <span class="capture-sequence__flash"></span>
+        <span class="capture-sequence__ring capture-sequence__ring--one"></span>
+        <span class="capture-sequence__ring capture-sequence__ring--two"></span>
+        <span class="capture-sequence__ring capture-sequence__ring--three"></span>
+        <span class="capture-sequence__iris"><i></i></span>
+      </div>
     <div class="lightbox" role="dialog" aria-modal="true" aria-label="${t.certification}" aria-hidden="true" data-open="false" id="lightbox"><button class="lightbox__close" type="button" data-action="close-certificate" aria-label="${t.close}">&times;</button><img src="${certificateImage}" alt="${isArabic ? t.certTitle : t.certEnglish}" width="1206" height="847"></div>`;
   startRoleAnimation(t.roles);
   observeSections();
@@ -284,7 +307,9 @@ function observeSections() {
   activeObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      activeSection = entry.target.id;
+      const sceneChapter = entry.target.id;
+      activeSection = sceneChapter === 'cert' ? 'path' : sceneChapter;
+      document.documentElement.dataset.sceneChapter = sceneChapter;
       document.querySelectorAll('.dock a').forEach((link) => {
         link.setAttribute('aria-current', String(link.hash === `#${activeSection}`));
       });
@@ -292,7 +317,72 @@ function observeSections() {
   }, { rootMargin: '-45% 0px -45% 0px' });
   sections.forEach((section) => {
     revealObserver.observe(section);
-    if (section.id !== 'cert') activeObserver.observe(section);
+    activeObserver.observe(section);
+  });
+}
+
+function installChapterNavigation() {
+  let chapterLocked = false;
+  let unlockTimer;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const moveChapter = (direction) => {
+    const chapters = [
+      document.getElementById('top'),
+      ...document.querySelectorAll('[data-section]'),
+    ].filter(Boolean);
+    const center = window.innerHeight / 2;
+    let currentIndex = chapters.findIndex((chapter) => {
+      const bounds = chapter.getBoundingClientRect();
+      return bounds.top <= center && bounds.bottom > center;
+    });
+    if (currentIndex < 0) {
+      currentIndex = chapters.reduce((closest, chapter, index) => {
+        const distance = Math.abs(chapter.getBoundingClientRect().top - center);
+        return distance < closest.distance ? { index, distance } : closest;
+      }, { index: 0, distance: Infinity }).index;
+    }
+
+    const current = chapters[currentIndex];
+    const bounds = current.getBoundingClientRect();
+    const oversized = bounds.height > window.innerHeight + 24;
+    let behavior = reducedMotion.matches ? 'instant' : 'smooth';
+
+    if (oversized && direction > 0 && bounds.bottom > window.innerHeight + 32) {
+      window.scrollBy({ top: Math.min(window.innerHeight * 0.72, bounds.bottom - window.innerHeight), behavior });
+    } else if (oversized && direction < 0 && bounds.top < -32) {
+      window.scrollBy({ top: -Math.min(window.innerHeight * 0.72, -bounds.top), behavior });
+    } else {
+      const next = chapters[currentIndex + direction];
+      if (!next) return false;
+      next.scrollIntoView({ block: 'start', behavior });
+    }
+
+    chapterLocked = true;
+    window.clearTimeout(unlockTimer);
+    unlockTimer = window.setTimeout(() => { chapterLocked = false; }, reducedMotion.matches ? 120 : 850);
+    return true;
+  };
+
+  window.addEventListener('wheel', (event) => {
+    if (reducedMotion.matches || event.ctrlKey || Math.abs(event.deltaY) < 6
+      || (event.target instanceof Element && event.target.closest('video, audio, input, textarea, select, [contenteditable="true"]'))
+      || document.getElementById('lightbox')?.dataset.open === 'true') return;
+    if (chapterLocked) {
+      event.preventDefault();
+      return;
+    }
+    if (moveChapter(Math.sign(event.deltaY))) event.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('keydown', (event) => {
+    if (reducedMotion.matches || event.altKey || event.ctrlKey || event.metaKey
+      || document.getElementById('lightbox')?.dataset.open === 'true'
+      || (event.target instanceof Element && event.target.closest('a, button, input, textarea, select, video, [contenteditable="true"]'))) return;
+    const direction = ['ArrowDown', 'PageDown', ' '].includes(event.key) ? 1
+      : ['ArrowUp', 'PageUp'].includes(event.key) ? -1
+        : 0;
+    if (direction && moveChapter(direction)) event.preventDefault();
   });
 }
 
@@ -308,7 +398,11 @@ function setLightbox(open) {
     const scrollbarGap = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
     if (scrollbarGap > 0) document.body.style.paddingInlineEnd = `${scrollbarGap}px`;
-    lightbox.querySelector('.lightbox__close').focus();
+    const closeButton = lightbox.querySelector('.lightbox__close');
+    closeButton?.focus({ preventScroll: true });
+    window.setTimeout(() => {
+      if (lightbox.dataset.open === 'true') closeButton?.focus({ preventScroll: true });
+    }, 50);
   } else {
     document.body.style.overflow = previousBodyOverflow;
     document.body.style.paddingInlineEnd = previousBodyPadding;
@@ -316,9 +410,32 @@ function setLightbox(open) {
   }
 }
 
+function closePreferencesPanel() {
+  const panel = document.getElementById('dockPreferencesPanel');
+  if (!panel || panel.hidden) return;
+  panel.hidden = true;
+  const button = document.querySelector('[data-action="preferences"]');
+  button?.setAttribute('aria-expanded', 'false');
+  if (button) button.innerHTML = preferenceToggleIcons.closed;
+}
+
 app.addEventListener('click', (event) => {
   const action = event.target.closest('[data-action]')?.dataset.action;
-  if (action === 'language') {
+  if (action === 'preferences') {
+    const button = event.target.closest('button');
+    const panel = document.getElementById('dockPreferencesPanel');
+    const open = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(open));
+    button.innerHTML = preferenceToggleIcons[open ? 'open' : 'closed'];
+    panel.hidden = !open;
+    if (open) {
+      const bounds = button.getBoundingClientRect();
+      const left = Math.max(8, Math.min(bounds.left + bounds.width / 2 - panel.offsetWidth / 2, window.innerWidth - panel.offsetWidth - 8));
+      const top = Math.min(bounds.bottom + 8, window.innerHeight - panel.offsetHeight - 8);
+      panel.style.left = `${left}px`;
+      panel.style.top = `${top}px`;
+    }
+  } else if (action === 'language') {
     language = language === 'ar' ? 'en' : 'ar';
     render();
   } else if (action === 'theme') {
@@ -330,13 +447,22 @@ app.addEventListener('click', (event) => {
       ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>'
       : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>';
   } else if (action === 'open-certificate') {
+    event.preventDefault();
     setLightbox(true);
   } else if (action === 'close-certificate' || (event.target.id === 'lightbox')) {
     setLightbox(false);
   }
+
+  if (!event.target.closest('#dockPreferencesPanel') && action !== 'preferences') closePreferencesPanel();
 });
 
 document.addEventListener('keydown', (event) => {
+  const preferencesPanel = document.getElementById('dockPreferencesPanel');
+  if (event.key === 'Escape' && preferencesPanel && !preferencesPanel.hidden) {
+    closePreferencesPanel();
+    document.querySelector('[data-action="preferences"]')?.focus();
+  }
+
   const lightbox = document.getElementById('lightbox');
   if (!lightbox || lightbox.dataset.open !== 'true') return;
   if (event.key === 'Escape') setLightbox(false);
@@ -352,6 +478,29 @@ const updateScrollProgress = () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
   document.getElementById('scrollProgress')?.style.setProperty('--scroll-progress', progress);
+  const endThreshold = Math.max(96, Math.min(180, window.innerHeight * 0.16));
+  if (progress < 0.82) finalCaptureArmed = true;
+  if (!finalCaptureArmed || scrollable <= 0
+    || window.scrollY + window.innerHeight < document.documentElement.scrollHeight - endThreshold) return;
+
+  finalCaptureArmed = false;
+  document.documentElement.dataset.cameraCapture = 'true';
+  document.documentElement.dataset.cameraCaptureTime = String(performance.now());
+  window.dispatchEvent(new Event('camera:shutter'));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sequence = document.getElementById('finalCapture');
+  if (!sequence) return;
+  window.clearTimeout(captureSequenceTimeout);
+  sequence.hidden = false;
+  sequence.classList.remove('is-active');
+  void sequence.offsetWidth;
+  sequence.classList.add('is-active');
+  captureSequenceTimeout = window.setTimeout(() => {
+    const activeSequence = document.getElementById('finalCapture');
+    if (!activeSequence) return;
+    activeSequence.classList.remove('is-active');
+    activeSequence.hidden = true;
+  }, reducedMotion ? 420 : 2600);
 };
 window.addEventListener('scroll', () => {
   if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollProgress);
@@ -374,3 +523,18 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 render();
 document.documentElement.classList.remove('no-js');
 updateScrollProgress();
+installChapterNavigation();
+
+const experienceScene = document.getElementById('experienceScene');
+if (experienceScene && 'WebGLRenderingContext' in window) {
+  const loadAmbientScene = () => {
+    import('./ambient-scene.js')
+      .then(({ initAmbientScene }) => initAmbientScene(experienceScene))
+      .catch((error) => console.error('Unable to load the ambient 3D scene.', error));
+  };
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(loadAmbientScene, { timeout: 2000 });
+  } else {
+    window.setTimeout(loadAmbientScene, 300);
+  }
+}
