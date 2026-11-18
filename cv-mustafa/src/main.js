@@ -349,14 +349,14 @@ function installChapterNavigation() {
     let behavior = reducedMotion.matches ? 'instant' : 'smooth';
 
     if (oversized && direction > 0 && bounds.bottom > window.innerHeight + 32) {
-      window.scrollBy({ top: Math.min(window.innerHeight * 0.72, bounds.bottom - window.innerHeight), behavior });
-    } else if (oversized && direction < 0 && bounds.top < -32) {
-      window.scrollBy({ top: -Math.min(window.innerHeight * 0.72, -bounds.top), behavior });
-    } else {
-      const next = chapters[currentIndex + direction];
-      if (!next) return false;
-      next.scrollIntoView({ block: 'start', behavior });
+      return false;
     }
+    if (oversized && direction < 0 && bounds.top < -32) {
+      return false;
+    }
+    const next = chapters[currentIndex + direction];
+    if (!next) return false;
+    next.scrollIntoView({ block: 'start', behavior });
 
     chapterLocked = true;
     window.clearTimeout(unlockTimer);
