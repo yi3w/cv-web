@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/cv-web/',
+  base: process.env.GITHUB_ACTIONS ? '/cv-web/' : '/',
 });
